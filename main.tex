@@ -1,4 +1,4 @@
-\documentclass[14pt,a4paper]{extarticle}
+\documentclass[14pt,a4paper,oneside]{extreport}
 
 % XeLaTeX รองรับ Unicode และอ่านฟอนต์ภาษาไทยจากไฟล์ในโครงการโดยตรง
 \usepackage{fontspec}
@@ -18,30 +18,47 @@
 ]{THSarabunNew}
 
 \usepackage{geometry}
-\geometry{margin=2.54cm}
+\geometry{top=2.54cm,bottom=2.54cm,left=3.81cm,right=2.54cm}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
 
-\title{แม่แบบเอกสารภาษาไทยด้วย \LaTeX}
-\author{CRU LaTeX Template}
-\date{\today}
+% ข้อมูลหลักของเอกสาร แก้ไขได้ที่ไฟล์นี้
+\input{chapters/0_basic-info}
 
 \begin{document}
 
-\maketitle
+\pagenumbering{gobble}
+\input{chapters/0_title-page}
 
-\section{ทดสอบภาษาไทย}
-เอกสารนี้คอมไพล์ด้วย XeLaTeX ภายใน Docker และใช้ฟอนต์ TH Sarabun New
-ที่เก็บอยู่ในโครงการ จึงไม่จำเป็นต้องติดตั้งฟอนต์เพิ่มในเครื่องผู้ใช้
+\clearpage
+\pagenumbering{roman}
+\input{chapters/0_abstract-th}
+\input{chapters/0_abstract-en}
+\input{chapters/0_acknowledgements}
 
-\textbf{ตัวหนา} \textit{ตัวเอียง} และ English text can be used together.
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
 
-\section{ทดสอบการตัดบรรทัดและกระจายข้อความแบบไทย}
-\noindent
-ภาษาไทยเขียนคำต่อเนื่องกันโดยทั่วไปและไม่ได้เว้นวรรคระหว่างคำเหมือนภาษาอังกฤษ
-ดังนั้นระบบจัดหน้าเอกสารต้องรู้ตำแหน่งที่เหมาะสมสำหรับการตัดบรรทัด
-ย่อหน้าทดสอบนี้จงใจเขียนให้มีความยาวหลายบรรทัดเพื่อยืนยันว่า XeLaTeX
-สามารถตัดข้อความภาษาไทยตามขอบเขตของคำและกระจายช่องไฟให้ข้อความชิดขอบทั้งสองด้านได้
-โดยไม่ทำให้ตัวอักษรซ้อนกันหรือหลุดออกนอกพื้นที่หน้ากระดาษ
-เมื่อแก้ไขเนื้อหาในงานวิจัย ข้อความควรไหลต่อไปยังบรรทัดใหม่อย่างสม่ำเสมอ
-และยังคงอ่านได้อย่างเป็นธรรมชาติแม้ในย่อหน้าที่มีคำภาษาอังกฤษ เช่น Docker และ LaTeX ปะปนอยู่ด้วย
+\clearpage
+\pagenumbering{arabic}
+\input{chapters/1_introduction}
+\input{chapters/2_literature-review}
+\input{chapters/3_methodology}
+\input{chapters/4_results}
+\input{chapters/5_conclusion}
+
+\input{chapters/references}
+\appendix
+\input{chapters/appendix-a}
 
 \end{document}
