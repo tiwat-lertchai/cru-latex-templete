@@ -1,0 +1,47 @@
+\documentclass[14pt,a4paper]{extarticle}
+
+% XeLaTeX รองรับ Unicode และอ่านฟอนต์ภาษาไทยจากไฟล์ในโครงการโดยตรง
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{thai}
+\setotherlanguage{english}
+% กำหนดกฎการตัดบรรทัดและระยะยืดระหว่างคำสำหรับข้อความภาษาไทย
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip=0pt plus 1pt
+
+\setmainfont[
+  Path=fonts/,
+  UprightFont={THSarabunNew.ttf},
+  BoldFont={THSarabunNew Bold.ttf},
+  ItalicFont={THSarabunNew Italic.ttf},
+  BoldItalicFont={THSarabunNew BoldItalic.ttf}
+]{THSarabunNew}
+
+\usepackage{geometry}
+\geometry{margin=2.54cm}
+
+\title{แม่แบบเอกสารภาษาไทยด้วย \LaTeX}
+\author{CRU LaTeX Template}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{ทดสอบภาษาไทย}
+เอกสารนี้คอมไพล์ด้วย XeLaTeX ภายใน Docker และใช้ฟอนต์ TH Sarabun New
+ที่เก็บอยู่ในโครงการ จึงไม่จำเป็นต้องติดตั้งฟอนต์เพิ่มในเครื่องผู้ใช้
+
+\textbf{ตัวหนา} \textit{ตัวเอียง} และ English text can be used together.
+
+\section{ทดสอบการตัดบรรทัดและกระจายข้อความแบบไทย}
+\noindent
+ภาษาไทยเขียนคำต่อเนื่องกันโดยทั่วไปและไม่ได้เว้นวรรคระหว่างคำเหมือนภาษาอังกฤษ
+ดังนั้นระบบจัดหน้าเอกสารต้องรู้ตำแหน่งที่เหมาะสมสำหรับการตัดบรรทัด
+ย่อหน้าทดสอบนี้จงใจเขียนให้มีความยาวหลายบรรทัดเพื่อยืนยันว่า XeLaTeX
+สามารถตัดข้อความภาษาไทยตามขอบเขตของคำและกระจายช่องไฟให้ข้อความชิดขอบทั้งสองด้านได้
+โดยไม่ทำให้ตัวอักษรซ้อนกันหรือหลุดออกนอกพื้นที่หน้ากระดาษ
+เมื่อแก้ไขเนื้อหาในงานวิจัย ข้อความควรไหลต่อไปยังบรรทัดใหม่อย่างสม่ำเสมอ
+และยังคงอ่านได้อย่างเป็นธรรมชาติแม้ในย่อหน้าที่มีคำภาษาอังกฤษ เช่น Docker และ LaTeX ปะปนอยู่ด้วย
+
+\end{document}

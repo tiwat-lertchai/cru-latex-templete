@@ -11,4 +11,33 @@ AI Agent ได้ง่ายยิ่งขึ้น
 
 ## ความต้องการของซอฟต์แวร์
 - Docker
-    - เพราะว่ามันต้องติดตั้งซอฟต์แวร์เพื่อ Render ออกมาเป็น PDF [เร็วๆ นี้ ถ้าหากพัฒนาทันเราจะเอาไปไว้ในเซิฟเวอร์ เราจะไม่ต้องติดตั้งลงเครื่องแทน]
+    - ใช้สำหรับ Render เอกสารเป็น PDF โดยไม่ต้องติดตั้ง LaTeX และฟอนต์ลงในเครื่อง
+
+## การ Compile ด้วย Docker
+
+โปรเจกต์ใช้ XeLaTeX เพื่อรองรับ Unicode และภาษาไทย โดยโหลดฟอนต์ TH Sarabun New
+จากโฟลเดอร์ `fonts/` โดยตรง
+
+Build image และ Compile `main.tex` ด้วยคำสั่ง:
+
+```bash
+docker compose run --rm latex
+```
+
+หากติดตั้ง Docker Compose แบบ standalone ให้เปลี่ยน `docker compose` เป็น
+`docker-compose` ในคำสั่งทั้งหมด
+
+เมื่อสำเร็จจะได้ไฟล์ `main.pdf` อยู่ในโฟลเดอร์โปรเจกต์ หากแก้ไขไฟล์แล้วสามารถใช้คำสั่งเดิมซ้ำได้
+
+หากต้องการ Compile ไฟล์อื่น ให้ส่ง option เดิมพร้อมชื่อไฟล์ เช่น:
+
+```bash
+docker compose run --rm latex \
+  -xelatex -interaction=nonstopmode -halt-on-error chapters/example.tex
+```
+
+ล้างไฟล์ชั่วคราวที่ LaTeX สร้างขึ้นด้วย:
+
+```bash
+docker compose run --rm latex -C main.tex
+```
