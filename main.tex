@@ -1,3 +1,4 @@
+\RequirePackage{fix-cm}
 \documentclass[14pt,a4paper,oneside]{extreport}
 
 % XeLaTeX รองรับ Unicode และอ่านฟอนต์ภาษาไทยจากไฟล์ในโครงการโดยตรง
@@ -18,16 +19,59 @@
 ]{THSarabunNew}
 
 \usepackage{geometry}
-\geometry{top=2.54cm,bottom=2.54cm,left=3.81cm,right=2.54cm}
+\geometry{top=3.81cm,bottom=2.54cm,left=3.81cm,right=2.54cm}
 \usepackage{setspace}
-\onehalfspacing
+\singlespacing
+\usepackage{indentfirst}
+\usepackage[indentafter]{titlesec}
+
+% รูปแบบจากเล่ม Word เดิม: เนื้อหา 16 pt, ย่อหน้า 0.25 นิ้ว
+\AtBeginDocument{\fontsize{16pt}{19.2pt}\selectfont}
+\setlength{\parindent}{0.635cm}
+\setlength{\parskip}{0pt}
+
+% หัวบท 18 pt ตัวหนา กึ่งกลาง: เลขบทและชื่อบทอยู่คนละบรรทัด
+\newlength{\chapterBeforeSpace}
+\newlength{\chapterAfterSpace}
+\setlength{\chapterBeforeSpace}{0pt}
+\setlength{\chapterAfterSpace}{19.2pt}
+\titleformat{\chapter}[block]
+  {\centering\bfseries\fontsize{18pt}{22pt}\selectfont}
+  {}{0pt}{\chaptertitlename\ \thechapter\protect\\}
+\titleformat{name=\chapter,numberless}[block]
+  {\centering\bfseries\fontsize{18pt}{22pt}\selectfont}
+  {}{0pt}{}
+\titlespacing*{\chapter}{0pt}{\chapterBeforeSpace}{\chapterAfterSpace}
+\titlespacing*{name=\chapter,numberless}{0pt}{\chapterBeforeSpace}{\chapterAfterSpace}
+
+% หัวข้อย่อยใช้ขนาดเดียวกับเนื้อหาและตัวหนา
+\titleformat{\section}
+  {\bfseries\fontsize{16pt}{19.2pt}\selectfont}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\bfseries\fontsize{16pt}{19.2pt}\selectfont}
+  {\thesubsection}{1em}{}
+% ควบคุมช่องว่างรอบหัวข้อโดยตรง ไม่ใช้ค่าเริ่มต้น 2.3ex/1.5ex ของ extreport
+\titlespacing*{\section}{0pt}{12pt}{0pt}
+\titlespacing*{\subsection}{0pt}{6pt}{0pt}
+
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{enumitem}
+% รายการใช้ระยะบรรทัด 1.0 โดยไม่มีช่องว่างพิเศษระหว่างข้อ
+\setlist{nosep}
 \usepackage{amsmath,amssymb}
+
+% เลขหน้าส่วนต้นแบบอักษรไทย: ก ข ค ...
+\makeatletter
+\newcommand{\pagenumberingthai}{%
+  \setcounter{page}{1}%
+  \gdef\thepage{\@thaialph\c@page}%
+}
+\makeatother
 
 % ข้อมูลหลักของเอกสาร แก้ไขได้ที่ไฟล์นี้
 \input{chapters/0_basic-info}
@@ -37,13 +81,18 @@
 \pagenumbering{gobble}
 \input{chapters/0_title-page}
 
+\input{chapters/0_approved-page}
+
 \clearpage
-\pagenumbering{roman}
+\pagenumberingthai
 \input{chapters/0_abstract-th}
-\input{chapters/0_abstract-en}
+% \input{chapters/0_abstract-en}
 \input{chapters/0_acknowledgements}
 
+\begingroup
+\setstretch{1.0}
 \tableofcontents
+\endgroup
 \clearpage
 \listoffigures
 \clearpage
