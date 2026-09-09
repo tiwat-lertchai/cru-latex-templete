@@ -1,11 +1,51 @@
-% รายละเอียดวิจัย
+\begingroup
+\setlength{\parindent}{0pt}
 
+% ตารางล่องหนสำหรับช่องลงนาม ทำให้เส้น ชื่อ และตำแหน่งตรงกันทุกตำแหน่ง
+\newcommand{\signatureblock}[2]{%
+  \noindent\begin{tabularx}{\textwidth}{@{}X>{\centering\arraybackslash}p{6cm}@{\hspace{0.5em}}p{3.3cm}@{}}
+    & \hrulefill & #1 \\
+    & (#2) & \\
+  \end{tabularx}%
+}
 
-% ข้อความนิดหน่อย
-\degree\space \faculty\space \university\space อนุมัติให้นับงานวิจัยนี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาบัณฑิต
+\begin{tabular}{@{}p{3.5cm}@{ : }p{10.1cm}@{}}
+หัวข้องานวิจัย & \thesistitleth\\
+               & \thesistitleen\\
+ผู้วิจัย        & \authorname\\
+รหัสประจำตัว   & \studentid\\
+ผู้วิจัย        & \secondauthorname\\
+รหัสประจำตัว   & \secondstudentid\\
+สาขาวิชา       & วิทยาการคอมพิวเตอร์และปัญญาประดิษฐ์\\
+อาจารย์ที่ปรึกษา & \advisor\\
+อาจารย์ที่ปรึกษาร่วม & \coadvisor\\
+\end{tabular}
 
-% ประธานหลักสูตร
+\vspace{16pt}
+\hrule
+\vspace{16pt}
 
+\setlength{\parindent}{1.27cm}
+\degree\space \faculty\space \university\space
+อนุมัติให้นับงานวิจัยนี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาบัณฑิต
 
-% คณะกรรมการ
-คณะกรรมการการสอบวิจัย
+\vspace{48pt}
+\signatureblock{ประธานหลักสูตร}{\programchair}
+
+\vspace{16pt}
+\noindent คณะกรรมการสอบงานวิจัย
+
+\clearpage
+
+\signatureblock{ประธานกรรมการ}{\examchair}
+
+\vspace{32pt}
+\signatureblock{กรรมการ}{\committee}
+
+\vspace{32pt}
+\signatureblock{อาจารย์ที่ปรึกษา}{\advisor}
+
+\vspace{32pt}
+\signatureblock{อาจารย์ที่ปรึกษาร่วม}{\coadvisor}
+
+\endgroup
