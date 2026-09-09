@@ -1,14 +1,19 @@
+% หน้าปก / Title page
 \begin{titlepage}
   \centering
+  \bfseries
   \vspace*{0cm}
   \includegraphics[height=3.86cm]{logo/cru_logo.png}\par
   {\bfseries\LARGE \thesistitleth\par}
   {\bfseries\Large \thesistitleen\par}
   \vfill
   {\Large \authorname\par}
+  \ifsecondauthor
+    {\Large \secondauthorname\par}
+  \fi
   \vfill
   {\large งานวิจัยนี้เป็นส่วนหนึ่งของวิชา \subjectname\par}
   {\large ระดับปริญญาตรี \degree\par}
-  {\large \faculty \university\par}
+  {\large \faculty \space \university\par}
   {\large \academicyear\par}
 \end{titlepage}

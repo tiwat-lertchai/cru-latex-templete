@@ -1,5 +1,6 @@
 services:
   latex:
+    # สภาพแวดล้อมคอมไพล์ที่เหมือนกันทุกเครื่อง / Reproducible build environment
     build:
       context: .
       dockerfile: Dockerfile

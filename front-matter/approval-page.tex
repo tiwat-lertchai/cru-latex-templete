@@ -1,9 +1,10 @@
+% หน้าอนุมัติและช่องลงนาม / Approval page and signature fields
 \begingroup
 \setlength{\parindent}{0pt}
 
-% ตารางล่องหนสำหรับช่องลงนาม ทำให้เส้น ชื่อ และตำแหน่งตรงกันทุกตำแหน่ง
+% ตารางล่องหนทำให้เส้น ชื่อ และตำแหน่งตรงกัน / Invisible grid aligns signature lines, names, and roles
 \newcommand{\signatureblock}[2]{%
-  \noindent\begin{tabularx}{\textwidth}{@{}X>{\centering\arraybackslash}p{6cm}@{\hspace{0.5em}}p{3.3cm}@{}}
+  \noindent\begin{tabularx}{\textwidth}{@{}X>{\centering\arraybackslash}p{7cm}@{\hspace{0.5em}}p{3.3cm}@{}}
     & \hrulefill & #1 \\
     & (#2) & \\
   \end{tabularx}%
@@ -14,11 +15,15 @@
                & \thesistitleen\\
 ผู้วิจัย        & \authorname\\
 รหัสประจำตัว   & \studentid\\
+\ifsecondauthor
 ผู้วิจัย        & \secondauthorname\\
 รหัสประจำตัว   & \secondstudentid\\
+\fi
 สาขาวิชา       & วิทยาการคอมพิวเตอร์และปัญญาประดิษฐ์\\
 อาจารย์ที่ปรึกษา & \advisor\\
+\ifcoadvisor
 อาจารย์ที่ปรึกษาร่วม & \coadvisor\\
+\fi
 \end{tabular}
 
 \vspace{16pt}
@@ -35,8 +40,7 @@
 \vspace{16pt}
 \noindent คณะกรรมการสอบงานวิจัย
 
-\clearpage
-
+\vspace{32pt}
 \signatureblock{ประธานกรรมการ}{\examchair}
 
 \vspace{32pt}
@@ -45,7 +49,9 @@
 \vspace{32pt}
 \signatureblock{อาจารย์ที่ปรึกษา}{\advisor}
 
+\ifcoadvisor
 \vspace{32pt}
 \signatureblock{อาจารย์ที่ปรึกษาร่วม}{\coadvisor}
+\fi
 
 \endgroup

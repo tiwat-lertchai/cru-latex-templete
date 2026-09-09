@@ -1,15 +1,27 @@
-% ข้อมูลที่ใช้ซ้ำในหน้าปกและบทคัดย่อ
+% ข้อมูลหลักที่ใช้ซ้ำทั่วทั้งเอกสาร / Document metadata reused throughout the thesis
+% แก้ค่าทางขวาของแต่ละคำสั่งเท่านั้น / Edit only the value on the right side of each command
+
+% สวิตช์เปิดหรือปิดส่วนเสริม / Optional-content switches
+\newif\ifincludeenglishabstract
+\includeenglishabstractfalse
+\newif\ifsecondauthor
+\secondauthorfalse
+\newif\ifcoadvisor
+\coadvisorfalse
+
+% ข้อมูลโครงการและผู้วิจัยหลัก / Project and primary-author information
 \newcommand{\thesistitleth}{เทรนนี่ - ระบบจัดการการฝึกงานและฝึกสหกิจ}
 \newcommand{\thesistitleen}{Trainy: Internship Management System}
-\newcommand{\authorname}{นายทิวัตถ์ เลิศชัย}
+\newcommand{\authorname}{ทิวัตถ์ เลิศชัย}
 \newcommand{\studentid}{6611501658}
 \newcommand{\subjectname}{การวิจัยทางวิทยาการคอมพิวเตอร์และปัญญาประดิษฐ์}
 \newcommand{\degree}{สาขาวิชาวิทยาการคอมพิวเตอร์และปัญญาประดิษฐ์}
 \newcommand{\faculty}{คณะวิทยาศาสตร์}
 \newcommand{\university}{มหาวิทยาลัยราชภัฏจันทรเกษม}
-\newcommand{\academicyear}{ปีการศึกษา 2568}
+\newcommand{\academicyear}{พ.ศ. 2568}
 \newcommand{\advisor}{ผู้ช่วยศาสตราจารย์วรรณา วิโรจน์แดนไทย}
-% ข้อมูลหน้าอนุมัติ (แก้ข้อความตัวอย่างให้เป็นข้อมูลจริงก่อนส่งเล่ม)
+
+% ข้อมูลหน้าอนุมัติ โปรดแทนข้อความตัวอย่างก่อนส่งเล่ม / Approval-page data; replace placeholders before submission
 \newcommand{\secondauthorname}{ชื่อผู้วิจัยคนที่ 2}
 \newcommand{\secondstudentid}{รหัสประจำตัวนักศึกษาคนที่ 2}
 \newcommand{\coadvisor}{ชื่ออาจารย์ที่ปรึกษาร่วม}

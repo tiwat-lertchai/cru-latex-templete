@@ -1,9 +1,16 @@
+# ลดขนาด build context โดยไม่ส่งไฟล์ที่สร้างใหม่ได้ / Keep generated files out of the Docker build context
 .git
+.DS_Store
 *.aux
 *.fdb_latexmk
 *.fls
+*.lof
 *.log
-*.out
+*.lot
 *.pdf
 *.synctex.gz
+*.toc
 *.xdv
+comparison/
+output/
+tmp/
