@@ -1,0 +1,217 @@
+\RequirePackage{fix-cm}
+\documentclass[17pt,a4paper,oneside]{extarticle}
+
+\usepackage[a4paper,top=2.2cm,bottom=2.2cm,left=2.7cm,right=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{thai}
+\setotherlanguage{english}
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip=0pt plus 1pt
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+  Path=fonts/,
+  UprightFont=THSarabunNew.ttf,
+  BoldFont=THSarabunNew Bold.ttf,
+  ItalicFont=THSarabunNew Italic.ttf,
+  BoldItalicFont=THSarabunNew BoldItalic.ttf
+]{THSarabunNew}
+\newfontfamily\thaifont[
+  Path=fonts/,
+  UprightFont=THSarabunNew.ttf,
+  BoldFont=THSarabunNew Bold.ttf,
+  ItalicFont=THSarabunNew Italic.ttf,
+  BoldItalicFont=THSarabunNew BoldItalic.ttf
+]{THSarabunNew}
+\newfontfamily\englishfont[
+  Path=fonts/,
+  UprightFont=THSarabunNew.ttf,
+  BoldFont=THSarabunNew Bold.ttf,
+  ItalicFont=THSarabunNew Italic.ttf,
+  BoldItalicFont=THSarabunNew BoldItalic.ttf
+]{THSarabunNew}
+
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage[indentafter]{titlesec}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+
+\input{config/proposal-info}
+
+\setstretch{1.0}
+% เพิ่มความยืดหยุ่นในการตัดบรรทัดภาษาไทย เพื่อไม่ให้ข้อความล้นขอบกระดาษ
+\setlength{\emergencystretch}{4em}
+\sloppy
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+\setlist{nosep,leftmargin=1.15cm,labelsep=.35cm}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\headheight}{22pt}
+% ใช้ลำดับเลขหัวข้อแบบเดียวกับเล่มวิจัย และรองรับถึง 2.1.1.1
+\setcounter{secnumdepth}{4}
+\titleformat{\section}
+  {\bfseries\fontsize{16pt}{16pt}\selectfont}
+  {\thesection.}{0.45em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{16pt}{16pt}\selectfont}
+  {\thesubsection}{0.45em}{}
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{16pt}{16pt}\selectfont}
+  {\thesubsubsection}{0.45em}{}
+\titleformat{\paragraph}[block]
+  {\normalfont\fontsize{16pt}{16pt}\selectfont}
+  {\theparagraph}{0.45em}{}
+\titlespacing*{\section}{0pt}{12pt}{0pt}
+\titlespacing*{\subsection}{0.95cm}{0pt}{0pt}
+\titlespacing*{\subsubsection}{2.22cm}{0pt}{0pt}
+\titlespacing*{\paragraph}{3.49cm}{0pt}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\proposalcode}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\fieldline}[1]{\textbf{#1}}
+\newcommand{\pending}[1]{\textcolor{red!70!black}{#1}}
+\newcommand{\studentvalue}[1]{#1}
+\newcommand{\studentpair}[2]{\textbf{#1}\hspace{0.18cm}\studentvalue{#2}}
+% รูปแบบช่องลงนามจาก front-matter/approval-page.tex
+\newcommand{\signatureblock}[2]{%
+  \noindent\begin{tabularx}{\textwidth}{@{}X>{\centering\arraybackslash}p{7cm}@{\hspace{0.5em}}p{3.3cm}@{}}
+    & \hrulefill & #1 \\
+    & (#2) & \\
+  \end{tabularx}}
+
+\begin{document}
+
+\begin{center}
+  {\bfseries\fontsize{16pt}{19.2pt}\selectfont แบบเสนอหัวข้องานวิจัยทางวิทยาการคอมพิวเตอร์และปัญญาประดิษฐ์\par}
+  \vspace{2pt}
+  {\bfseries คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏจันทรเกษม\par}
+\end{center}
+
+\section{ข้อมูลนักศึกษา}
+\noindent
+\makebox[6.6cm][l]{\studentpair{รหัสนักศึกษา}{\proposalstudentid}}%
+\studentpair{ชื่อ--นามสกุล}{\proposalstudentname}\\[4pt]
+\noindent
+\makebox[3.8cm][l]{\studentpair{นักศึกษา}{\proposalstudyprogram}}%
+\makebox[2.8cm][l]{\studentpair{ชั้นปี}{\proposalyearlevel}}%
+\studentpair{หมู่เรียน}{\proposalgroup}
+
+\section{ชื่อหัวข้อที่นำเสนอ}
+\noindent\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{2.4cm}@{\hspace{0.25cm}}>{\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}X@{}}
+ภาษาไทย & \proposaltitleth \\
+ภาษาอังกฤษ & \textenglish{\proposaltitleen}
+\end{tabularx}
+
+\section{ความเป็นมาและความสำคัญของปัญหา}
+การฝึกงานและการศึกษาเชิงบูรณาการกับการทำงานเชื่อมโยงการเรียนในมหาวิทยาลัยกับการปฏิบัติงานจริง นักศึกษาต้องประสานงานกับอาจารย์ เจ้าหน้าที่ และสถานประกอบการ ตั้งแต่การสมัครและอนุมัติสถานที่ฝึกงาน การบันทึกเวลาและกิจกรรม การติดตามความก้าวหน้า การนิเทศ จนถึงการประเมินและสรุปผล จึงเป็นกระบวนการหลายฝ่ายที่ต้องใช้ข้อมูลร่วมกันอย่างต่อเนื่อง
+
+เมื่อข้อมูลกระจายอยู่ในเอกสาร แบบฟอร์ม และช่องทางติดต่อหลายระบบ อาจเกิดข้อมูลซ้ำซ้อน ตรวจสอบสถานะได้ยาก และติดตามการปฏิบัติงานไม่ต่อเนื่อง ระบบสารสนเทศด้านการฝึกงานจึงควรเป็นศูนย์กลางของข้อมูล เอกสาร การอนุมัติ การติดตาม และการประเมิน พร้อมกำหนดสิทธิ์ให้เหมาะกับบทบาทของผู้ใช้
+
+Trainy เป็นระบบที่พัฒนาขึ้นเพื่อสนับสนุนกระบวนการดังกล่าว โดยรองรับนักศึกษา อาจารย์ \mbox{ผู้ประสานงาน} เจ้าหน้าที่มหาวิทยาลัย ผู้ดูแลบริษัท และพี่เลี้ยงในสถานประกอบการ อย่างไรก็ตาม ระบบรายงานความก้าวหน้ารุ่นปัจจุบันยังเก็บข้อความสรุปและจำนวนชั่วโมงเป็นหลัก จึงยังไม่ครอบคลุมรายละเอียดของสมุดบันทึกฝึกงานแบบมีโครงสร้าง เช่น กิจกรรม สิ่งที่เรียนรู้ ปัญหา วิธีแก้ไข ทักษะ และผลลัพธ์ของงาน อีกทั้งยังต้องประเมินว่าผู้ใช้แต่ละบทบาทสามารถทำภารกิจหลักได้จริงหรือไม่
+
+งานวิจัยนี้จึงมุ่งศึกษา ออกแบบ และพัฒนา Trainy สำหรับคณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏจันทรเกษม พร้อมประเมินการทำภารกิจและความสามารถในการใช้งานกับผู้เกี่ยวข้อง 4 กลุ่ม ได้แก่ นักศึกษา อาจารย์ เจ้าหน้าที่ และผู้ประกอบการหรือพี่เลี้ยง ผลการศึกษาจะใช้เป็นหลักฐานสำหรับปรับปรุงระบบก่อนนำไปใช้จริงในวงกว้าง โดยไม่อ้างอิงผลแทนมหาวิทยาลัยอื่น
+
+\section{วัตถุประสงค์}
+\begin{enumerate}
+  \item เพื่อศึกษากระบวนการ ความต้องการ และปัญหาในการจัดการและบันทึกการฝึกงานของคณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏจันทรเกษม
+  \item เพื่อออกแบบและพัฒนา Trainy ให้รองรับกระบวนการฝึกงานตั้งแต่เริ่มต้นจนถึงการประเมินและสรุปผล โดยเชื่อมโยงนักศึกษา อาจารย์ เจ้าหน้าที่ และสถานประกอบการ
+  \item เพื่อประเมินประสิทธิผลในการทำภารกิจ ปัญหาการใช้งาน และความสามารถในการใช้งานของ Trainy จากผู้ใช้ที่เกี่ยวข้อง
+  \item เพื่อจัดทำข้อเสนอแนะสำหรับปรับปรุงระบบบันทึกและติดตามการฝึกงานให้เหมาะสมกับการใช้งานจริง
+\end{enumerate}
+
+\section{หลักการ ทฤษฎี และเหตุผล}
+งานวิจัยใช้แนวคิดระบบสารสนเทศเพื่อรวมข้อมูลและกระบวนการของผู้เกี่ยวข้องหลายฝ่าย แนวคิดการออกแบบโดยยึดผู้ใช้เป็นศูนย์กลางเพื่อศึกษาภารกิจและความต้องการตามบทบาท และแนวคิดสมุดบันทึกดิจิทัลเพื่อจัดเก็บกิจกรรม การเรียนรู้ ปัญหา วิธีแก้ไข และข้อเสนอแนะอย่างตรวจสอบย้อนหลังได้ การพัฒนาจะดำเนินในลักษณะวิจัยและพัฒนาแบบกรณีศึกษา โดยใช้ข้อมูลเชิงปริมาณร่วมกับข้อมูลเชิงคุณภาพ
+
+การประเมินจะพิจารณาความสำเร็จของภารกิจ เวลา ข้อผิดพลาด และการขอความช่วยเหลือ ร่วมกับแบบประเมิน System Usability Scale (SUS) จำนวน 10 ข้อและคำถามปลายเปิด วิธีดังกล่าวเหมาะกว่าการใช้คะแนนความพึงพอใจเพียงค่าเดียว เพราะช่วยระบุทั้งระดับการใช้งานโดยรวมและจุดติดขัดในขั้นตอนจริง ทั้งนี้จะรายงานผลแยกตามบทบาทเพื่อไม่ให้จำนวนผู้ใช้กลุ่มใหญ่กลบปัญหาของกลุ่มย่อย
+
+\section{ระยะเวลาดำเนินการ}
+กำหนดระยะเวลาดำเนินการเบื้องต้น \fieldline{\proposalperiod} โดยนับเดือนที่ 1 เป็นเดือนแรกหลังหัวข้อได้รับอนุมัติ กำหนดการจริงต้องปรับให้ตรงกับปฏิทินการศึกษาและช่วงฝึกงานของกลุ่มตัวอย่าง
+
+\clearpage
+\begin{center}
+\small
+\textbf{แผนการดำเนินงานรายเดือน (Gantt chart)}\\[3pt]
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}X|*{8}{>{\centering\arraybackslash}p{0.65cm}|}}
+\hline
+\rowcolor{gray!20}\textbf{กิจกรรม} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} \\
+\hline
+ศึกษากระบวนการ เอกสาร และผู้เกี่ยวข้อง & \cellcolor{gray!45} & \cellcolor{gray!45} & & & & & & \\
+\hline
+วิเคราะห์ความต้องการและออกแบบระบบ & & \cellcolor{gray!45} & \cellcolor{gray!45} & & & & & \\
+\hline
+พัฒนาและปรับปรุงต้นแบบ Trainy & & & \cellcolor{gray!45} & \cellcolor{gray!45} & \cellcolor{gray!45} & & & \\
+\hline
+ตรวจเครื่องมือและทดลองนำร่อง & & & & & \cellcolor{gray!45} & \cellcolor{gray!45} & & \\
+\hline
+เก็บรวบรวมข้อมูลจากผู้ใช้ & & & & & & \cellcolor{gray!45} & \cellcolor{gray!45} & \\
+\hline
+วิเคราะห์ สรุปผล และจัดทำรายงาน & & & & & & & \cellcolor{gray!45} & \cellcolor{gray!45} \\
+\hline
+\end{tabularx}
+\end{center}
+
+\section{แผนการดำเนินงานและขอบเขตการศึกษา}
+\subsection{แผนการดำเนินงาน}
+\subsubsection{ศึกษากระบวนการ เอกสาร ผู้ใช้ และปัญหาที่เกิดขึ้นในการจัดการฝึกงาน}
+\subsubsection{วิเคราะห์ความต้องการและออกแบบกระบวนการของ Trainy โดยให้ความสำคัญกับบันทึกฝึกงานแบบมีโครงสร้าง}
+\subsubsection{พัฒนาหรือปรับปรุงต้นแบบและตรึงรุ่นของระบบสำหรับการทดสอบ}
+\subsubsection{ให้ผู้เชี่ยวชาญตรวจเครื่องมืออย่างน้อย 3 คน และทดลองนำร่องกับผู้ใช้ที่ไม่อยู่ในกลุ่มตัวอย่างหลัก}
+\subsubsection{ให้ผู้เข้าร่วมทดลองทำภารกิจตามบทบาท บันทึกผลการทำภารกิจ และตอบแบบประเมิน SUS กับคำถามปลายเปิด}
+\subsubsection{วิเคราะห์ข้อมูลเชิงพรรณนาและจัดหมวดหมู่ข้อเสนอแนะ แยกผลตามบทบาท}
+\subsubsection{สรุปผล ปรับปรุงระบบ และจัดทำรายงานการวิจัย}
+
+\subsection{ขอบเขตการศึกษา}
+ศึกษาภายในคณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏจันทรเกษม ครอบคลุมการสมัครหรือยื่นคำร้อง การอนุมัติและจัดวางนักศึกษา การลงเวลาและคำขอแก้ไข การบันทึกกิจกรรมและความก้าวหน้า การตรวจและรับรองบันทึก การจัดการเอกสาร การแจ้งเตือน การประเมิน และรายงานสรุป ไม่ครอบคลุมการพิสูจน์ผลสัมฤทธิ์ทางการเรียนหรือผลต่อการได้งานในระยะยาว และไม่เปรียบเทียบระหว่างมหาวิทยาลัย
+
+กลุ่มตัวอย่างจำนวน 30 คน ใช้การเลือกแบบเจาะจงร่วมกับโควตาตามบทบาท ได้แก่ นักศึกษา 18 คน อาจารย์นิเทศหรือ\mbox{ผู้ประสานงาน} 5 คน เจ้าหน้าที่ 3 คน และผู้ประกอบการหรือพี่เลี้ยง 4 คน หากเจ้าหน้าที่ที่เกี่ยวข้องจริงมีน้อยกว่า 3 คน จะเชิญทั้งหมดและจัดสรรจำนวนที่เหลือให้กลุ่มผู้ประกอบการ โดยยังคงจำนวนรวม 30 คน
+
+\clearpage
+\subsection{ฮาร์ดแวร์ (Hardware) ที่ใช้}
+\proposalhardware
+
+\subsection{ซอฟต์แวร์ (Software) ที่ใช้}
+\proposalsoftware
+
+\section{ประโยชน์ที่คาดว่าจะได้รับ}
+\begin{enumerate}
+  \item ได้ข้อกำหนดระบบที่สะท้อนกระบวนการจริงของคณะวิทยาศาสตร์
+  \item ได้ระบบกลางที่ช่วยลดการแยกส่วนของข้อมูลและทำให้ติดตามสถานะได้ชัดเจนขึ้น
+  \item นักศึกษาสามารถบันทึกหลักฐานการเรียนรู้และความก้าวหน้าได้เป็นระบบ
+  \item อาจารย์ เจ้าหน้าที่ และพี่เลี้ยงสามารถตรวจสอบและให้ข้อเสนอแนะผ่านข้อมูลชุดเดียวกัน
+  \item ได้หลักฐานด้านการใช้งานและข้อเสนอแนะสำหรับพัฒนาระบบก่อนนำไปใช้จริงในวงกว้างขึ้น
+\end{enumerate}
+
+\section{คำนิยามศัพท์เฉพาะ}
+\begin{description}[style=nextline,leftmargin=0.8cm,labelindent=0cm,labelwidth=0cm]
+  \item[Trainy] เว็บแอปพลิเคชันที่พัฒนาขึ้นเพื่อจัดการกระบวนการฝึกงานและการบันทึกการปฏิบัติงานของนักศึกษา
+  \item[บันทึกการฝึกงาน] ข้อมูลที่นักศึกษาบันทึกระหว่างการปฏิบัติงาน เช่น วันที่ เวลา กิจกรรม สิ่งที่เรียนรู้ ปัญหา วิธีแก้ไข ทักษะ และผลลัพธ์
+  \item[ผู้ประกอบการหรือพี่เลี้ยง] บุคคลในสถานประกอบการที่กำกับ ตรวจสอบ ให้ข้อเสนอแนะ หรือประเมินนักศึกษาฝึกงาน
+  \item[ความสามารถในการใช้งาน] การที่ผู้ใช้สามารถใช้ระบบเพื่อบรรลุภารกิจได้อย่างมีประสิทธิผล มีประสิทธิภาพ และเกิดความพึงพอใจในบริบทที่กำหนด
+  \item[กระบวนการตั้งแต่ต้นจนจบ] ขั้นตอนตั้งแต่การเตรียมและสมัครฝึกงานจนถึงการประเมิน สรุปผล และปิดการฝึกงาน
+\end{description}
+
+\clearpage
+\section{ความคิดเห็นของอาจารย์ที่ปรึกษา}
+\noindent\dotfill\\[1.2cm]
+\vspace{36pt}
+\signatureblock{อาจารย์ที่ปรึกษา}{\proposaladvisor}
+
+\section{ความเห็นของประธานหลักสูตร}
+\noindent \fbox{\rule{0pt}{0.55em}\hspace{0.55em}} อนุมัติ\qquad
+\fbox{\rule{0pt}{0.55em}\hspace{0.55em}} ไม่อนุมัติ\\[1.2cm]
+\vspace{36pt}
+\signatureblock{ประธานหลักสูตร}{\pending{\proposalchair}}
+
+\vfill
+\noindent\footnotesize\textcolor{gray!70!black}{หมายเหตุ: ข้อความสีแดงและรายละเอียดเทคโนโลยีเป็นรายการที่ต้องตรวจสอบก่อนส่งฉบับจริง}
+
+\end{document}
